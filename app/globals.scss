@@ -1,0 +1,379 @@
+/* Header */ 
+.headBanner {height:50px;line-height:50px;text-align:center;background:#0f9cff;
+    a {display:block;font-size:16px;color:#fff;}
+}
+// @keyframes textHover1 {0% {width:100%;} 100% {width:0;}} 
+// @keyframes textHover2 {0% {width:0;} 100% {width:100%;}}
+
+/* menu after line keyframe */
+@mixin textAnimation1($duration, $name){
+    animation-duration: $duration;
+    animation-name: $name;
+}
+@mixin textAnimation2($duration, $name){
+    animation-duration: $duration;
+    animation-name: $name;
+}
+@mixin keyframe1 ($animation_name){
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+@mixin keyframe2 ($animation_name){
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+@include keyframe1 (MOVE1) {
+    0% {width:100%;} 100% {width:0;}
+}
+@include keyframe2 (MOVE2) {
+    0% {width:0;} 100% {width:100%;}
+}
+/* and menu after line keyframe */
+/* text move keyframe */
+@mixin moveAnimation1($duration, $name){
+    animation-duration: $duration;
+    animation-name: $name;
+}
+@mixin moveAnimation2($duration, $name){
+    animation-duration: $duration;
+    animation-name: $name;
+}
+@mixin keyframeMove1 ($animation_name){
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+@mixin keyframeMove2 ($animation_name){
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+@include keyframeMove1 (textMOVE1) {
+    0% {top:0;} 100% {top:-200px;}
+}
+@include keyframeMove2 (textMOVE2) {
+    0% {top:-200px;} 100% {top:0;}
+}
+/* and text move keyframe */
+.headCenter {
+    display:flex;align-items:center;justify-content:space-between;width:1640px;height:86px;margin:0 auto;
+    nav {
+        > ul {
+            display:flex;align-items:center;
+        }
+    }
+    .headLeft {
+        display:flex;align-items:center;
+        h1 {height:86px;margin-right:40px;
+            a {display:block;height:100%;}
+        }
+        > nav {
+            > ul {
+                > li {position:relative;display:flex;align-items:center;justify-content:center;width:120px;height:85px;
+                    
+                    > a 
+                    {position:relative;height:100%;line-height:85px;font-size:18px;
+                        &::after {position:absolute;transition:all 0.5s;left:0;bottom:20px;content:"";display:block;width:0;height:1px;background:#000;}
+                        &:hover::after {width:100%;}
+                    }
+                    .subMenu {
+                        position:absolute;top:85px;left:0;z-index:10;display:none;
+                    }
+                    &:hover {
+                        .subMenu {
+                            display:block;
+                            li {
+                                width:120px;height:40px;text-align:center;
+                                a {
+                                    display:block;width:100%;height:40px;line-height:40px;font-size:15px;background:#fff;color:#000;
+                                }
+                                &:hover {
+                                    a {background:#0f9cff;color:#fff;}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .headRight {
+        nav {
+            ul {
+                li {margin-left:20px;
+                    a {position:relative;display:block;height:34px;line-height:34px;
+                        &::after {content:"";display:block;position:absolute;z-index:0;top:-100px;left:50%;transform:translateX(-50%);width:34px;height:34px;transition:all 0.7s;} 
+                        &:hover {color:#fff;
+                            &::after {top:0;}
+                        }
+                    }
+                    &:nth-child(1) {
+                        a::after {background:url(../public/image/header/icons8-login.png) no-repeat center;}
+                    }
+                    &:nth-child(2) {
+                        a::after {background:url(../public/image/header/icons8-my.png) no-repeat center;}
+                    }
+                    &:nth-child(3) {
+                        a::after {background:url(../public/image/header/icons8-search.png) no-repeat center;}
+                    }
+                    &:nth-child(4) {
+                        a::after {background:url(../public/image/header/icons8-cart.png) no-repeat center;}
+                    }
+                }
+            }
+        }
+    }
+}
+/* and Header */ 
+/* Main */ 
+@mixin sectionTitle($wid){
+    width:$wid;display:flex;align-items:center;justify-content:space-between;margin:140px 0 70px 0;
+}
+.sectionTitle {display:flex;align-items:center;justify-content:space-between;margin:140px 0 70px 0;
+    h2 {font-size:46px;}
+    a {font-size:18px;}
+}
+.section1 {position:relative;width:100%;overflow-x:hidden;
+    .section1Center {width:100%;
+        // &::after {content:"";display:block;clear:both;}
+        .sectionBg {position:relative;display:flex;width:100vw;
+            .bgInfo{
+                position:absolute;top:336px;left:140px;color:#fff;
+                p {font-size:3.125vw;font-weight:bold;}
+                h3 {margin:20px 0 15px 0; font-size:24px;}
+                h4 {font-size:18px;font-weight:400;}
+                a {display:flex;justify-content:center;align-items:center;width:200px;height:70px;margin-top:40px;font-size:20px;background:rgba($color: #fff, $alpha: 0.2);border:1px solid #fff;box-sizing:border-box;color:#fff;transition:all 0.5s;
+                    &:hover {background:rgba($color: #fff, $alpha: 0.5);}
+                }
+            }
+        }
+        .swiper-pagination {bottom:200px;left:50%;transform:translateX(-50%); width:660px;
+            span {width:150px;border-radius:0;background:#fff;opacity:0.8;
+                &.swiper-pagination-bullet-active {background:#0f9cff;}
+            }
+
+        }
+    }
+    .pagination {position:absolute;bottom:166px;left:50%;transform:translateX(-50%);display:flex;justify-content:space-between;width:660px;
+        button {position:relative;width:150px;height:44px;font-size:20px;font-weight:700;color:#fff;
+            &::after {position:absolute;bottom:0;content:"";display:block;width:150px;height:4px;background:#000;opacity:0.7;}
+            &.active::after {background:#fff;}
+        }
+    }
+    .buttonWrap {
+        button {position:absolute;top:50%;transform:translateY(-50%);width:70px;height:50px;background:#fff;}
+        .btnPrev {left:40px;}
+        .btnNext {right:40px;}
+    }
+    
+}
+.section2 {width:1640px;margin:0 auto;
+    .cardFilter{
+        button {font-size:18px;color:#666;
+            &.active{font-weight:bold;color:#0f9cff;}
+        }
+        button:nth-child(n+2) {margin-left:30px;}
+    }
+    .cardItem {display:flex;justify-content: space-between;
+        .card {text-align:right;
+            h4 {margin:18px 0 26px 0;font-size:24px;}
+            span {font-size:18px;color:#777;}
+        }
+    }
+}
+.section3 {height:550px;padding-top:100px;margin-top:140px;text-align:center;background:url(../public/image/main/banner/section3.png) no-repeat center;background-size:cover;box-sizing:border-box;
+    p {line-height:1.3;color:#3f2727;
+        &:nth-child(1) {margin-bottom:94px;font-size:44px;}
+        &:nth-child(2) {font-size:24px;}
+    }
+    img {margin-top:40px;}
+}
+.section4 {width:1640px;margin:0 auto;
+    .monthZone{display:flex;justify-content:space-between;
+        > div{display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            div {width:370px;
+                h4 {font-size:30px;}
+                p {
+                    white-space:pre-line;
+                    &:nth-child(2) {margin:14px 0 40px 0;font-size:16px;color:#333;}
+                    &:nth-child(3) {line-height:30px;font-size:18px;}
+                }
+                a {display:inline-block;margin-top:20px;font-size:16px;color:#999;
+                    &:hover {color:#333;}
+                }   
+            }
+            .monthNumGroup {display:flex;justify-content:space-between;
+                button {width:100%;font-size:18px;color:#999;
+                    &.active {color:#e60000;}
+                }
+            }
+        }
+        .monthImgGroup {
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            height:650px;
+            button {
+                width:150px;
+                img {
+                    border:3px solid #999;
+                    border-radius:15px;
+                    box-sizing:border-box;
+                }
+                &.active{
+                    img {
+                        border:3px solid #e60000;
+                    }
+                }
+            }
+        }
+        .monthBigImgGroup {border-radius:15px; box-shadow:5px 5px 14px 2px #333;
+            img {
+                
+            }
+        }
+    }
+    .monthInfo {white-space:pre-line;}
+}
+.section5 {width:1640px;margin:0 auto;
+    .discountGroup {margin-bottom:70px;
+        &::after {content:"";display:block;clear:both;}
+        div {
+            float:left;margin-right:20px;
+            &:nth-child(-n+4) {margin-bottom:20px}
+            &:nth-child(4n+0) {margin-right:0;}
+        }
+    }
+}
+.section6 {width:1640px;margin:0 auto;text-align:center;
+    .beneFits {font-size:36px;font-weight:600;}
+    .beneFitsText {margin:40px 0 80px 0; font-size:24px;}
+    .beneGroup {display:flex;justify-content:space-between;
+        .beneBox {width:450px;height:250px;padding-top:50px;border:1px solid #000;border-radius:10px;box-sizing:border-box;
+            p {font-size:24px;color:#555;}
+            h5 {margin:30px 0;font-size:48px;}
+            a {font-size:18px;}
+        }
+    }
+}
+@mixin reviewAnimation1($duration, $name, $count, $function){
+    animation-duration: $duration;
+    animation-name: $name;
+    animation-iteration-count: $count;
+    animation-timing-function: $function;
+}
+@mixin reviewAnimation2($duration, $name, $count, $function){
+    animation-duration: $duration;
+    animation-name: $name;
+    animation-iteration-count: $count;
+    animation-timing-function: $function;
+}
+@mixin keyframeReview1 ($animation_name){
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+@mixin keyframeReview2 ($animation_name){
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+@include keyframeReview1 (RIVEW1) {
+    0% {transform:translateX(0);}
+    50% {transform:translateX(-100%);}
+    50.01% {transform:translateX(100%);}
+    100% {transform:translateX(0);}
+}
+@include keyframeReview2 (RIVEW2) {
+    0% {transition:translateX(0);}
+    100% {transform:translateX(-200%);}
+}
+.section7 {overflow:hidden;
+    .sectionTitle {width:1640px;margin:140px auto 70px auto;}
+    .reviewSlide {display:flex;position:relative;overflow:hidden;
+        &::before, &::after {content:"";position:absolute;z-index:2;width:200px;height:300px;background:linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);}
+        &::before {left:0;top:0;}
+        &::after {right:0;top:0;transform:rotateZ(180deg);}
+        .reviewGroup {display:flex;
+            &.original {@include reviewAnimation1(33s, RIVEW1, infinite, linear);}
+            &.clone {@include reviewAnimation2(33s, RIVEW2, infinite, linear);}
+            div {width:380px;margin-right:40px;
+                p {
+                    &:nth-child(2) {margin:20px 0;line-height:26px;font-size:16px;color:#333;white-space:pre-line;}
+                    &:last-child {margin-top:20px;}
+                }
+            }
+        }
+
+    }
+}
+/* and Main */ 
+/* footer */
+footer {height:555px;margin-top:180px;background:#2a2a2d;
+    .footCenter {width:1640px;margin:0 auto;
+        .footfirst {height:96px;border-bottom:1px solid #707073;
+            display:flex;justify-content:space-between;align-items:center;
+            h2 {height:86px;
+                a {display:block;height:100%;}
+            }
+            > nav {
+                > ul {
+                    > li {position:relative;float:left;width:120px;
+                        a {font-size:18px;color:#fff;}
+                        .subMenu {position:absolute;top:90px;left:50%;transform:translateX(-50%);width:120px;
+                            li {margin-bottom:30px;}
+                        }
+                    }
+                    &::after {content:"";display:block;clear:both;}
+                }
+            }
+        }
+        .footInfo {margin-top:12px;
+            .footCS {width:400px;padding:20px;background:#35373e;
+                h3 {font-size:18px;color:#fff;}
+                p {font-size:14px;
+                    &:nth-child(2) {margin:20px 0;font-size:30px;color:#707073;}
+                    &:nth-child(3) {margin-bottom:20px;color:#b5b4b4;}
+                    &:nth-child(4) {color:#fff;}
+                }
+            }
+            .footInfoList {margin:40px 0;
+                &::after {content:"";display:block;clear:both;}
+                li {float:left;margin-right:30px;
+                    a {font-size:16px;color:#b5b4b4;}
+                    &:first-child {
+                        a {font-weight:bold;color:#fff;}
+                    }
+                    &:nth-child(3) {
+                        a {font-weight:bold;color:#fff;}
+                    }
+                    &:last-child {margin-right:0;}
+                }
+            }
+            .footInfoContent {
+                span {display:inline-block;font-size:14px;color:#b5b4b4;
+                    &:nth-child(2) {margin:0 12px;}
+                    &:nth-child(5) {margin:10px 0;}
+                    &:nth-child(6) {margin:0 12px;}
+                    &:nth-child(9) {margin:0 12px 0 0;}
+                }
+                a {margin-left:12px;
+                    strong {color:#d5d4d4;}
+                }
+            }
+            .footGuide {display:flex;align-items:center;justify-content:space-between;margin-top:30px;
+                p {font-size:24px;color:#999;}
+                .footSns {
+                    a {margin-left:20px;
+                        &:first-child {margin-left:0;}
+                    }
+                }
+            }
+        }
+    }
+}
+/* and footer */
